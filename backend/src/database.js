@@ -39,19 +39,22 @@ function error(err,rs,cn){
 }
 
 function open(sql, binds, dml,rs) {
-    oracledb.getConnection(connAttrs, function(err,cn){
-       if(error(err, rs, null)==-1) return;
-       cn.execute(sql,binds,{autoCommit:dml}, function(err, result){
-         if(error(err,rs,cn)==-1)return;
-         rs.contentType("application/json").status(200);
-         if(dml)
-         rs.send(JSON.stringify(result.rowsAffected));
-         else{
-           console.log(result.metaData);
-           rs.send(JSON.stringify(result.rows));
-         }
-         close(cn);
-       });
+    return new Promise((res, rej)=>{
+        oracledb.getConnection(connAttrs)
+        .then((cn)=>{
+            cn.execute(sql, binds, {autoCommit: dml}).then((result)=>{
+                if(dml){
+                    res(SON.stringify(result.rowsAffected));
+                }else{
+                    res(JSON.stringify(result.rows));
+                }
+                close(cn);
+            }).catch((err)=>{
+                if(error(err, rs, cn)==-1) return;
+            })
+        }).catch((err)=>{
+            if(error(err, rs, null)==-1) return;
+        })
     })
  }
 
