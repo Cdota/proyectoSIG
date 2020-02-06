@@ -29,5 +29,14 @@ router.post("/ingresar",async (req, res) => {
   const token = jwt.sign({ _id: usu_usuario }, "secretKey");
   return res.status(200).json({ token });
 });
-  
+
+function verifyToken  (req, res, next) {
+  if (!req.headers.authorization) return res.status(401).json({ message: "No esta autorizado para ver esto" });
+  let token = req.headers.authorization.split(' ')[1];
+  if (token === 'null') return res.status(401).json({ message: "No esta autorizado para ver esto" });
+
+  let payload = jwt.verify(token, 'secretKey');
+  req.user_email = payload._id;
+  next();
+}
 module.exports = router;

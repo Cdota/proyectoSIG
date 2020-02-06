@@ -39,6 +39,7 @@ function error(err,rs,cn){
 }
 
 function open(sql, binds, dml,rs) {
+    
     return new Promise((res, rej)=>{
         oracledb.getConnection(connAttrs)
         .then((cn)=>{
