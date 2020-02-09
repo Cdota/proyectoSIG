@@ -10,26 +10,42 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { AuthService } from '../app/services/auth.service';
 
 import  { AuthGuard } from './auth.guard';
 import  { TokenInterceptorService } from './services/token-interceptor.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DefaultModule } from './layouts/default/default.module';
+import { AddComponent } from './modules/usuarios/add/add.component';
+import { EditComponent } from './modules/usuarios/edit/edit.component';
+import { ListComponent } from './modules/usuarios/list/list.component';
+import { MatIconModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     SigninComponent,
     PrivateTasksComponent,
-    TasksComponent
+    TasksComponent,
+    AddComponent,
+    EditComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule, 
+    DefaultModule,
+    MatIconModule
   ],
   providers: [
     AuthGuard,
+    AuthService,
     {
       provide:  HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService, 

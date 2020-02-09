@@ -1,19 +1,25 @@
 <div class="row">
     <div class="col-md-4 mx-auto">
+        <div class="padre">
+            <div class="hijo" style="font-size:25pt">SISTEMA DE VENTAS</div>
+          </div>
+          <div class="padre">
+            <div class="hijo" style="font-size:20pt">"REY MAR"</div>
+          </div>
         <div class="card">
             <div class="card-header">
-                SignIn
+                Ingresar
             </div>
             <div class="card-body">
                 <form (submit)="signIn()">
                     <div class="form-group">
-                        <input type="text" [(ngModel)]= "user.usu_usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus>
+                        <input type="text" [(ngModel)]= "user.usu_nombre" name="usuario" class="form-control" placeholder="Usuario" required autofocus>
                     </div>
                     <div class="form-group">
                         <input type="password"  [(ngModel)]= "user.usu_password" name="password" class="form-control" placeholder="Password" required>
                     </div>
                     <button type = "submit" class="btn btn-primary btn-block">
-                        SignIn
+                        Ingresar
                     </button>
                 </form>
             </div>

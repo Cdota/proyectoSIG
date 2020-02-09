@@ -29,8 +29,8 @@ var connAttrs ={
 function error(err,rs,cn){
     if(err){
         console.log(err.message);
-        rs.contentType("application/json").status(500);
-        rs.send(err.message);
+        //rs.contentType("application/json").status(500);
+        //rs.send(err.message);
         if(cn!=null) close(cn);
         return -1;
     }else{
