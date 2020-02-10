@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrivateTasksComponent } from './private-tasks.component';
+import { ListclientesComponent } from './listclientes.component';
 
-describe('PrivateTasksComponent', () => {
-  let component: PrivateTasksComponent;
-  let fixture: ComponentFixture<PrivateTasksComponent>;
+describe('ListclientesComponent', () => {
+  let component: ListclientesComponent;
+  let fixture: ComponentFixture<ListclientesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PrivateTasksComponent ]
+      declarations: [ ListclientesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivateTasksComponent);
+    fixture = TestBed.createComponent(ListclientesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

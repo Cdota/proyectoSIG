@@ -1,1 +1,68 @@
-<p>add works!</p>
+<div style="text-align:cneter">
+</div>
+<div class="container">
+    <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
+        <mat-icon> list_alt </mat-icon>
+    </button>
+    <button (click)= "Nuevo()" mat-icon-button class="btn btn-primary" style="margin-left: 10px">
+        <mat-icon> person_add </mat-icon>
+    </button>
+    
+</div>
+<th></th>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Usuarios</h3>
+        </div>
+        <div class="card-body">
+            <form (submit)="Guardar()" class="row">
+                <div class="form-group col-md-6">
+                    <label for="">Nombre</label>
+                    <input type="text" [(ngModel)]= "user.usu_nombre" name="usuario" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Apellido</label>
+                    <input type="text" [(ngModel)]= "user.usu_apellido" name="apellido" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Password</label>
+                    <input type="password" [(ngModel)]= "user.usu_password" name="password" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Numero Documento</label>
+                    <input type="text" [(ngModel)]= "user.usu_num_documento" name="num_documento" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Teléfono</label>
+                    <input type="text" [(ngModel)]= "user.usu_telefono" name="telefono" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Dirección</label>
+                    <input type="text" [(ngModel)]= "user.usu_direccion" name="direccion" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Email</label>
+                    <input type="text" [(ngModel)]= "user.usu_email" name="email" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Rol</label>
+                    <input type="text" [(ngModel)]= "user.rol_id" name="rol_id" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Ciudad</label>
+                    <input type="text" [(ngModel)]= "user.ciud_id" name="ciud_id" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Tipo de Documento</label>
+                    <input type="text" [(ngModel)]= "user.doc_id" name="doc_id" class="form-control" required autofocus>
+                </div>
+                <div class="col-md-12">
+                    <div class="row justify-content-center">
+                        <button type = "submit" class="btn btn-danger col-md-2">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

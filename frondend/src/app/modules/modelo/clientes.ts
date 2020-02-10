@@ -1,4 +1,4 @@
-export class Usuario{
+export class Cliente{
     usu_id: number;
     usu_nombre:String;
     usu_apellido:String;

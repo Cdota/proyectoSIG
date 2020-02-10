@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //components
 import {SigninComponent} from "./components/signin/signin.component";
-import {SignupComponent} from "./components/signup/signup.component";
 import { PostsComponent } from './modules/usuarios/posts.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
@@ -19,10 +18,6 @@ const routes: Routes = [{
 {
   path: "signin",
   component: SigninComponent
-},
-{
-  path: "signup",
-  component: SignupComponent
 }, 
 {
     path: "inicio",
@@ -33,21 +28,19 @@ const routes: Routes = [{
       canActivate: [AuthGuard]
     }, 
     {
-        path: "usuarios",
-        component: PostsComponent,
+        path: "listarUsuario",
+        component: ListComponent,
         canActivate: [AuthGuard]
     },
     {
-        path: "listar",
-        component: ListComponent,
-    },
-    {
-        path: "editar",
+        path: "editarUsuario",
         component: EditComponent,
+        canActivate: [AuthGuard]
     },
     {
-        path: "agregar",
+        path: "agregarUsuario",
         component: AddComponent,
+        canActivate: [AuthGuard]
     }
   ]
 }];

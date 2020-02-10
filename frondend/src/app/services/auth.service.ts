@@ -37,4 +37,8 @@ export class AuthService {
    getUsuario(){
     return this.http.get<Usuario[]>(this.URL + "/obtener");
    }
+
+   createUsuario(user){
+    return this.http.post<any>(this.URL + "/registro", user);
+   }  
 }

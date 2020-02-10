@@ -15,10 +15,11 @@ router.post("/registro", (req, res) => {
    const { usu_id, usu_nombre, usu_apellido, usu_password, usu_num_documento, usu_telefono, usu_direccion, usu_email, rol_id, ciud_id, doc_id } = req.body;
    let salt = bcrypt.genSaltSync(10);
    let hash = bcrypt.hashSync(usu_password, salt);
+   console.log( usu_id, usu_nombre, usu_apellido, hash, usu_num_documento, usu_telefono, usu_direccion, usu_email, rol_id, ciud_id, doc_id);
    let sql = "INSERT INTO USUARIO(USU_NOMBRE, USU_APELLIDO, USU_PASSWORD, USU_NUM_DOCUMENTO, USU_TELEFONO, USU_DIRECCION, USU_EMAIL, ROL_ID, CIUD_ID, DOC_ID) VALUES (:usu_nombre, :usu_apellido, :hash, :usu_num_documento, :usu_telefono, :usu_direccion, :usu_email, :rol_id, :ciud_id, :doc_id )";
    coneccionbd.open(sql, [usu_nombre, usu_apellido, hash, usu_num_documento,usu_telefono, usu_direccion, usu_email, rol_id, ciud_id, doc_id ], true);
    const token = jwt.sign({ _id: usu_id }, "secretKey");
-   res.status(200).json({ token });
+   return res.status(200).json({ token });
 });
 
 router.post("/ingresar",async (req, res) => {

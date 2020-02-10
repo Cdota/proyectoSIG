@@ -6,10 +6,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
-import { PrivateTasksComponent } from './components/private-tasks/private-tasks.component';
-import { TasksComponent } from './components/tasks/tasks.component';
 import { AuthService } from '../app/services/auth.service';
 
 import  { AuthGuard } from './auth.guard';
@@ -20,16 +17,31 @@ import { AddComponent } from './modules/usuarios/add/add.component';
 import { EditComponent } from './modules/usuarios/edit/edit.component';
 import { ListComponent } from './modules/usuarios/list/list.component';
 import { MatIconModule } from '@angular/material';
+import { AddclientesComponent } from './modules/clientes/addclientes/addclientes.component';
+import { EditclientesComponent } from './modules/clientes/editclientes/editclientes.component';
+import { ListclientesComponent } from './modules/clientes/listclientes/listclientes.component';
+import { AddproductosComponent } from './modules/productos/addproductos/addproductos.component';
+import { EditproductosComponent } from './modules/productos/editproductos/editproductos.component';
+import { ListproductosComponent } from './modules/productos/listproductos/listproductos.component';
+import { AddproveedoresComponent } from './modules/proveedores/addproveedores/addproveedores.component';
+import { EditproveedoresComponent } from './modules/proveedores/editproveedores/editproveedores.component';
+import { ListproveedoresComponent } from './modules/proveedores/listproveedores/listproveedores.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
     SigninComponent,
-    PrivateTasksComponent,
-    TasksComponent,
     AddComponent,
     EditComponent,
-    ListComponent
+    ListComponent,
+    AddclientesComponent,
+    EditclientesComponent,
+    ListclientesComponent,
+    AddproductosComponent,
+    EditproductosComponent,
+    ListproductosComponent,
+    AddproveedoresComponent,
+    EditproveedoresComponent,
+    ListproveedoresComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +54,7 @@ import { MatIconModule } from '@angular/material';
     BrowserAnimationsModule, 
     DefaultModule,
     MatIconModule
+    
   ],
   providers: [
     AuthGuard,

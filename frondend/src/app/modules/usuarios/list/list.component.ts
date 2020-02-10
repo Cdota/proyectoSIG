@@ -15,15 +15,17 @@ export class ListComponent implements OnInit {
     private router:Router)  { }
 
     Listar(){
-      this.router.navigate(["/inicio/listar"]);
+      this.router.navigate(["/inicio/listarUsuario"]);
     }
-  
-  ngOnInit() {
-    this.service.getUsuario()
-    .subscribe(data=>{
-      console.log(data);
-      this.usuarios=data;
+    Nuevo(){
+      this.router.navigate(["/inicio/agregarUsuario"]);
     }
-    )
+    ngOnInit() {
+      this.service.getUsuario()
+      .subscribe(data=>{
+        console.log(data);
+        this.usuarios=data;
+      }
+      )
   }
 }
