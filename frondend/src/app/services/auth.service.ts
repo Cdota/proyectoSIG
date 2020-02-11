@@ -18,6 +18,7 @@ export class AuthService {
   } 
 
   signIn(user){
+      console.log(user);
       return this.http.post<any>(this.URL + "/ingresar", user);
   } 
 
@@ -38,6 +39,16 @@ export class AuthService {
     return this.http.get<Usuario[]>(this.URL + "/obtener");
    }
 
+   getUsuarioId(user){
+    console.log(user);
+    return this.http.get<Usuario>(this.URL + "/obtenerUsuario",user);
+   }
+
+
+   updateUsuario(user){
+    return this.http.put<Usuario>(this.URL + "/actualizar", user);
+   }
+   
    createUsuario(user){
     return this.http.post<any>(this.URL + "/registro", user);
    }  
