@@ -39,9 +39,10 @@ export class AuthService {
     return this.http.get<Usuario[]>(this.URL + "/obtener");
    }
 
-   getUsuarioId(user){
-    console.log(user);
-    return this.http.get<Usuario>(this.URL + "/obtenerUsuario",user);
+   getUsuarioId(id){
+    console.log(id);
+    const url = `${this.URL+ "/obtenerUsuario"}/${id}`;
+    return this.http.get<Usuario>(url);
    }
 
 

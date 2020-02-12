@@ -45,16 +45,18 @@ function open(sql, binds, dml,rs) {
         .then((cn)=>{
             cn.execute(sql, binds, {autoCommit: dml}).then((result)=>{
                 if(dml){
-                    res(SON.stringify(result.rowsAffected));
+                    res(JSON.stringify(result.rowsAffected));
                 }else{
                     res(JSON.stringify(result.rows));
                 }
                 close(cn);
             }).catch((err)=>{
-                if(error(err, rs, cn)==-1) return;
+                ///if(error(err, rs, cn)==-1) return;
+                rej(err.message);
             })
         }).catch((err)=>{
-            if(error(err, rs, null)==-1) return;
+           // if(error(err, rs, null)==-1) return;
+            rej(err.message);
         })
     })
  }
