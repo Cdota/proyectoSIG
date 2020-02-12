@@ -1,1 +1,55 @@
-<p>listproductos works!</p>
+<div style="text-align:cneter">
+</div>
+<div class="container">
+    <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
+        <mat-icon> list_alt </mat-icon>
+    </button>
+    <button (click)= "Nuevo()" mat-icon-button class="btn btn-primary" style="margin-left: 10px">
+        <mat-icon> person_add </mat-icon>
+    </button>
+</div>
+<th></th>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Productos</h3>
+        </div>
+        <div class="table-responsive text-center table-hover">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio Venta</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let producto of productos" class="text-center">
+                    <th scope="row">{{producto[0]}} </th>
+                    <td> {{producto[1]}}  </td>
+                    <td> {{producto[2]}} </td>
+                    <td> {{producto[3]}} </td>
+                    <td> {{producto[4]}} </td>
+                    <td> {{producto[5]}} </td>
+                    <td> {{producto[6]}} </td>
+                    <td> {{producto[7]}} </td>
+                    <td>
+                        <button (click)="Editar(producto)" mat-icon-button class="btn btn-warning">
+                            <mat-icon >autorenew</mat-icon>
+                        </button>
+                        <button mat-icon-button class="btn btn-danger"  style="margin-left: 10px">
+                            <mat-icon> highlight_off </mat-icon>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

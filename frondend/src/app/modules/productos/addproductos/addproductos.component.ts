@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-addproductos',
@@ -7,7 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddproductosComponent implements OnInit {
 
-  constructor() { }
+  productos = {}
+  constructor(private service:AuthService,
+    private router:Router) { }
+
+  Listar(){
+      this.router.navigate(["/inicio/listarProductos"]);
+  }
+
+  Guardar(){
+    this.service.createProductos(this.productos) 
+    .subscribe(
+      res => {
+        console.log(res)
+        //localStorage.setItem("token", res.token);
+        alert("Registrado Correctamente.....!");
+        this.router.navigate(["/inicio/listarProductos"])
+      },
+        err => console.log(err)
+    )
+  }
 
   ngOnInit() {
   }

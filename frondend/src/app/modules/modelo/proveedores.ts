@@ -1,13 +1,10 @@
-export class Proveedore{
-    usu_id: number;
-    usu_nombre:String;
-    usu_apellido:String;
-    usu_password:String;
-    usu_num_documento:String;
-    usu_telefono:number;
-    usu_direccion:String;
-    usu_email:String;
-    rol_id:number;
-    ciud_id:number;
+export class Proveedor{
+    prov_id: number;
+    prov_nombre:String;
+    prov_num_documento:String;
+    prov_telefono:number;
+    prov_direccion:String;
+    prov_email:String;
     doc_id:number;
+    ciud_id:number
 }

@@ -17,6 +17,7 @@ import { AddComponent } from './modules/usuarios/add/add.component';
 import { EditComponent } from './modules/usuarios/edit/edit.component';
 import { ListComponent } from './modules/usuarios/list/list.component';
 import { MatIconModule } from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AddclientesComponent } from './modules/clientes/addclientes/addclientes.component';
 import { EditclientesComponent } from './modules/clientes/editclientes/editclientes.component';
 import { ListclientesComponent } from './modules/clientes/listclientes/listclientes.component';
@@ -53,8 +54,8 @@ import { ListproveedoresComponent } from './modules/proveedores/listproveedores/
     AppRoutingModule,
     BrowserAnimationsModule, 
     DefaultModule,
-    MatIconModule
-    
+    MatIconModule,
+    MatDatepickerModule
   ],
   providers: [
     AuthGuard,

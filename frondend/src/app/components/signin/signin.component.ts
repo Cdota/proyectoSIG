@@ -9,7 +9,9 @@ import {Router} from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
-  user = {}
+  user = {
+    "usu_nombre":""
+  }
 
   constructor(private authservices: AuthService,
     private router: Router
@@ -22,9 +24,14 @@ export class SigninComponent implements OnInit {
     this.authservices.signIn(this.user) 
   .subscribe(
     res => {
-      console.log(res)
-      localStorage.setItem("token", res.token);
-      this.router.navigate(["/inicio/dashboard"])
+      console.log(this.user.usu_nombre)
+      //if(this.user.usu_nombre=="Carlos"){
+        localStorage.setItem("token", res.token);
+        this.router.navigate(["/inicio/dashboard"])
+      //}else{
+        //console.log("Hola");
+        
+     // }
     },
       err => console.log(err)
     )  

@@ -1,13 +1,11 @@
 export class Cliente{
-    usu_id: number;
-    usu_nombre:String;
-    usu_apellido:String;
-    usu_password:String;
-    usu_num_documento:String;
-    usu_telefono:number;
-    usu_direccion:String;
-    usu_email:String;
-    rol_id:number;
+    clie_id: number;
+    clie_nombre:String;
+    clie_apellido:String;
+    clie_num_documento:String;
+    clie_telefono:number;
+    clie_direccion:String;
+    clie_email:String;
     ciud_id:number;
     doc_id:number;
 }

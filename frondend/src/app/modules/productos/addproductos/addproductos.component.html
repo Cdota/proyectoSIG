@@ -1,1 +1,52 @@
-<p>addproductos works!</p>
+<div style="text-align:cneter">
+</div>
+<div class="container">
+    <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
+        <mat-icon> list_alt </mat-icon>
+    </button> 
+</div>
+<th></th>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Ingresar Producto</h3>
+        </div>
+        <div class="card-body">
+            <form (submit)="Guardar()" class="row">
+                <div class="form-group col-md-6">
+                    <label for="">Nombre</label>
+                    <input type="text" [(ngModel)]= "productos.prod_nombre" name="prod_nombre" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Precio Venta</label>
+                    <input type="text" [(ngModel)]= "productos.prod_precio_venta" name="prod_precio_venta" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Cantidad</label>
+                    <input type="text" [(ngModel)]= "productos.prod_cantidad" name="prod_cantidad" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Descripcion</label>
+                    <input type="text" [(ngModel)]= "productos.prod_descripcion" name="prod_descripcion" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Fecha</label>
+                    <input type="date"  [(ngModel)]= "productos.prod_fecha" name="prod_fecha" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Categoria</label>
+                    <input type="text" [(ngModel)]= "productos.cat_id" name="cat_id" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Proveedor</label>
+                    <input type="text" [(ngModel)]= "productos.prov_id" name="prov_id" class="form-control" required autofocus>
+                </div>
+                <div class="col-md-12">
+                    <div class="row justify-content-center">
+                        <button type = "submit" class="btn btn-danger col-md-2">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,57 @@
-<p>listclientes works!</p>
+<div style="text-align:cneter">
+</div>
+<div class="container">
+    <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
+        <mat-icon> list_alt </mat-icon>
+    </button>
+    <button (click)= "Nuevo()" mat-icon-button class="btn btn-primary" style="margin-left: 10px">
+        <mat-icon> person_add </mat-icon>
+    </button>
+</div>
+<th></th>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Clientes</h3>
+        </div>
+        <div class="table-responsive text-center table-hover">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col"># Documento</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Tipo Documento</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cliente of clientes" class="text-center">
+                    <th scope="row">{{cliente[0]}} </th>
+                    <td> {{cliente[1]}}  </td>
+                    <td> {{cliente[2]}} </td>
+                    <td> {{cliente[3]}} </td>
+                    <td> {{cliente[4]}} </td>
+                    <td> {{cliente[5]}} </td>
+                    <td> {{cliente[6]}} </td>
+                    <td> {{cliente[7]}} </td>
+                    <td> {{cliente[8]}} </td>
+                    <td>
+                        <button (click)="Editar(cliente)" mat-icon-button class="btn btn-warning">
+                            <mat-icon >autorenew</mat-icon>
+                        </button>
+                        <button mat-icon-button class="btn btn-danger"  style="margin-left: 10px">
+                            <mat-icon> highlight_off </mat-icon>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

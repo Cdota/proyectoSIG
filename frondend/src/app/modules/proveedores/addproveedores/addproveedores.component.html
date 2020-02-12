@@ -1,1 +1,52 @@
-<p>addproveedores works!</p>
+<div style="text-align:cneter">
+</div>
+<div class="container">
+    <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
+        <mat-icon> list_alt </mat-icon>
+    </button> 
+</div>
+<th></th>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Ingresar Proveedores</h3>
+        </div>
+        <div class="card-body">
+            <form (submit)="Guardar()" class="row">
+                <div class="form-group col-md-6">
+                    <label for="">Nombre</label>
+                    <input type="text" [(ngModel)]= "proveedores.prov_nombre" name="prov_nombre" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Numero Documento</label>
+                    <input type="text" [(ngModel)]= "proveedores.prov_num_documento" name="prov_num_documento" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Teléfono</label>
+                    <input type="text" [(ngModel)]= "proveedores.prov_telefono" name="prov_telefono" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Dirección</label>
+                    <input type="text" [(ngModel)]= "proveedores.prov_direccion" name="prov_direccion" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Email</label>
+                    <input type="text" [(ngModel)]= "proveedores.prov_email" name="prov_email" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Tipo Documento</label>
+                    <input type="text" [(ngModel)]= "proveedores.doc_id" name="doc_id" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Ciudad</label>
+                    <input type="text" [(ngModel)]= "proveedores.ciud_id" name="ciud_id" class="form-control" required autofocus>
+                </div>
+                <div class="col-md-12">
+                    <div class="row justify-content-center">
+                        <button type = "submit" class="btn btn-danger col-md-2">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
