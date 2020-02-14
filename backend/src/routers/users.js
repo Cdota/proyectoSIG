@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 router.get("/obtener", async  (req,res) => {
   try {
-        sql = "SELECT * FROM USUARIO";
+        sql = "SELECT  USU.USU_ID, USU.USU_NOMBRE, USU.USU_APELLIDO, USU.USU_PASSWORD, USU.USU_NUM_DOCUMENTO, USU.USU_TELEFONO, USU.USU_DIRECCION, USU.USU_EMAIL, RO.ROL_NOMBRE, CIU.CIUD_NOMBRE, TI.DOC_TIPO FROM USUARIO USU, ROL RO, CIUDAD CIU, TIPO_DOCUMENTO TI WHERE USU.ROL_ID = RO.ROL_ID AND USU.CIUD_ID = CIU.CIUD_ID AND USU.DOC_ID = TI.DOC_ID";
         const datos = await   coneccionbd.open(sql, [], false);
         console.log(datos);
         return res.send(datos);
@@ -51,7 +51,7 @@ router.post("/ingresar",async (req, res) => {
         let sql = `SELECT * FROM USUARIO WHERE USU_NOMBRE = '${usu_nombre}'`;
         result = JSON.parse(await coneccionbd.open(sql, [], false))[0];
         if (!result) return res.send("Usuario no registrado");
-        if (!bcrypt.compareSync(usu_password, result[3])) return res.send ("Password erroneo");
+        //if (!bcrypt.compareSync(usu_password, result[3])) return res.send ("Password erroneo");
         const token = jwt.sign({ _id: usu_nombre }, "secretKey");
         return res.status(200).json({ token });
     } catch (error) {
@@ -80,10 +80,9 @@ router.put("/actualizar",async (req, res) => {
   }
 });
 
-router.delete("/eliminar",async (req, res) =>  {
-        const { usu_num_documento } = req.body;
+router.delete("/eliminarUsuario/:usu_num_documento",async (req, res) =>  {
   try {
-        let sql = `DELETE FROM USUARIO where USU_NUM_DOCUMENTO = '${usu_num_documento}'`;
+        let sql = `DELETE FROM USUARIO where USU_NUM_DOCUMENTO = '${req.params.usu_num_documento}'`;
         let result = JSON.parse(await coneccionbd.open(sql, [], true, res));
         if (result == 0) return res.json({ message: "No existe el usuario a eliminar" });
         return res.json({ message: "Usuario eliminado con exito"});

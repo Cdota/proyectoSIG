@@ -25,6 +25,7 @@ export class SigninComponent implements OnInit {
   .subscribe(
     res => {
       console.log(this.user.usu_nombre)
+      localStorage.setItem("nombre",this.user.usu_nombre);
       //if(this.user.usu_nombre=="Carlos"){
         localStorage.setItem("token", res.token);
         this.router.navigate(["/inicio/dashboard"])

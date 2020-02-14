@@ -4,7 +4,7 @@ const coneccionbd = require("../database");
 
 router.get("/obtenerProveedores", async  (req,res) => {
   try {
-        sql = "SELECT * FROM PROVEEDOR";
+        sql = "SELECT PR.PROV_ID,  PR.PROV_NOMBRE, PR.PROV_NUM_DOCUMENTO, PR.PROV_TELEFONO, PR.PROV_DIRECCION, PR.PROV_EMAIL, CIUD.CIUD_NOMBRE, TI.DOC_TIPO  FROM PROVEEDOR PR, CIUDAD CIUD, TIPO_DOCUMENTO TI WHERE PR.CIUD_ID = CIUD.CIUD_ID AND PR.DOC_ID = TI.DOC_ID";
         const datos = await   coneccionbd.open(sql, [], false);
         console.log(datos);
         return res.send(datos);
@@ -56,6 +56,17 @@ router.put("/actualizarProveedor",async (req, res) => {
     } catch (error) {
         return res.json({ message: "Error al Actualizar Cliente"});
   }
+});
+
+router.delete("/eliminarProveedor/:prov_num_documento",async (req, res) =>  {
+      try {
+            let sql = `DELETE FROM PROVEEDOR WHERE PROV_NUM_DOCUMENTO = '${req.params.prov_num_documento}'`;
+            let result = JSON.parse(await coneccionbd.open(sql, [], true, res));
+            if (result == 0) return res.json({ message: "No existe el usuario a eliminar" });
+            return res.json({ message: "Proveedor eliminado con exito"});
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Usuario"});
+      }
 });
 
 module.exports = router;

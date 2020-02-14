@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { Usuario } from '../../modelo/usuario';
+import { DialogoComponent } from '../dialogo/dialogo.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-list',
@@ -12,13 +14,40 @@ export class ListComponent implements OnInit {
 
   usuarios:Usuario[];
   constructor(private service:AuthService,
-    private router:Router)  { }
+    private router:Router, public dialog: MatDialog)  { }
+    user =  {
+      "usu_num_documento":"",
+    }
 
     Listar(){
       this.router.navigate(["/inicio/listarUsuario"]);
     }
+
     Nuevo(){
       this.router.navigate(["/inicio/agregarUsuario"]);
+    }
+
+    openDialog(usuarios): void {
+      const dialogRef = this.dialog.open(DialogoComponent, {});
+      localStorage.setItem("usu_num_documento",usuarios[4]);
+      dialogRef.afterClosed().subscribe(result => {
+      alert("Eliminado Correctamente.....!")
+      localStorage.removeItem("usu_num_documento");
+      this.ngOnInit();
+      console.log(result);
+      });
+    }
+
+    Eliminar(usuarios){
+      localStorage.setItem("usu_num_documento",usuarios[4]);
+      this.user.usu_num_documento=localStorage.getItem("usu_num_documento");
+      console.log(this.user.usu_num_documento);
+      this.service.deleteUsuario(this.user.usu_num_documento)
+      .subscribe(data=>{
+        this.ngOnInit();
+        alert("Eliminado Correctamente.....!")
+       }
+      )
     }
 
     Editar(usuarios){
@@ -35,7 +64,7 @@ export class ListComponent implements OnInit {
       this.router.navigate(["/inicio/editarUsuario"]);
     }
 
-    ngOnInit() {
+    public ngOnInit() {
       this.service.getUsuario()
       .subscribe(data=>{
         console.log(data);

@@ -12,38 +12,36 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Proveedores</h3>
+            <h3>Productos</h3>
         </div>
         <div class="table-responsive text-center table-hover">
             <table class="table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col"># Documento</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Ciudad</th>
-                    <th scope="col">Tipo Documento</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio Venta</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Total</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let proveedor of proveedores" class="text-center">
-                    <th scope="row">{{proveedor[0]}} </th>
-                    <td> {{proveedor[1]}}  </td>
-                    <td> {{proveedor[2]}} </td>
-                    <td> {{proveedor[3]}} </td>
-                    <td> {{proveedor[4]}} </td>
-                    <td> {{proveedor[5]}} </td>
-                    <td> {{proveedor[6]}} </td>
-                    <td> {{proveedor[7]}} </td>
+                  <tr *ngFor="let producto of productos" class="text-center">
+                    <th scope="row">{{producto[0]}} </th>
+                    <td> {{producto[1]}}  </td>
+                    <td> {{producto[2]}} </td>
+                    <td> {{producto[3]}} </td>
+                    <td> {{producto[4]}} </td>
+                    <td> {{producto[5]}} </td>
+                    <td> {{producto[6]}} </td>
                     <td>
-                        <button (click)="Editar(proveedor)" mat-icon-button class="btn btn-warning">
+                        <button (click)="Editar(producto)" mat-icon-button class="btn btn-warning">
                             <mat-icon >autorenew</mat-icon>
                         </button>
-                        <button (click)=" openDialog(proveedor)" mat-icon-button class="btn btn-danger"  style="margin-left: 10px">
+                        <button mat-icon-button class="btn btn-danger"  style="margin-left: 10px">
                             <mat-icon> highlight_off </mat-icon>
                         </button>
                     </td>

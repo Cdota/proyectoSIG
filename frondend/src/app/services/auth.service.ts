@@ -54,6 +54,10 @@ export class AuthService {
     return this.http.get<Producto[]>(this.URL + "/obtenerProductos");
    }
 
+   getCompras(){
+    return this.http.get<Producto[]>(this.URL + "/obtenerCompras");
+   }
+
    getUsuarioId(id){
     console.log(id);
     const url = `${this.URL+ "/obtenerUsuario"}/${id}`;
@@ -62,7 +66,13 @@ export class AuthService {
 
    getClientesId(id){
     console.log(id);
-    const url = `${this.URL+ "/obtenerCliente"}/${id}`;
+    const url = `${this.URL+ "/obtenerProducto"}/${id}`;
+    return this.http.get<Producto>(url);
+   }
+
+   getProductosId(id){
+    console.log(id);
+    const url = `${this.URL+ "/obtenerProducto"}/${id}`;
     return this.http.get<Cliente>(url);
    }
 
@@ -73,6 +83,10 @@ export class AuthService {
 
    updateClientes(user){
     return this.http.put<Cliente>(this.URL + "/actualizarCliente", user);
+   }
+
+   updateProducto(user){
+    return this.http.put<Producto>(this.URL + "/actualizarProducto", user);
    }
 
    updateProveedores(user){
@@ -92,6 +106,31 @@ export class AuthService {
    } 
 
    createProductos(user){
+     //console.log(usuario);
     return this.http.post<any>(this.URL + "/registroProductos", user);
+   } 
+
+   deleteUsuario(id){
+    console.log(id);
+    const url = `${this.URL+ "/eliminarUsuario"}/${id}`;
+    return this.http.delete<Usuario>(url);
+   } 
+
+   deleteProveedor(id){
+    console.log(id);
+    const url = `${this.URL+ "/eliminarProveedor"}/${id}`;
+    return this.http.delete<Proveedor>(url);
+   } 
+
+   deleteCliente(id){
+    console.log(id);
+    const url = `${this.URL+ "/eliminarCliente"}/${id}`;
+    return this.http.delete<Cliente>(url);
+   } 
+
+   deleteProducto(id){
+    console.log(id);
+    const url = `${this.URL+ "/eliminarProducto"}/${id}`;
+    return this.http.delete<Producto>(url);
    } 
 }

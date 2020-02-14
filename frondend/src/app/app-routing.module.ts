@@ -17,6 +17,7 @@ import { ListproveedoresComponent } from './modules/proveedores/listproveedores/
 import { AddproductosComponent } from './modules/productos/addproductos/addproductos.component';
 import { EditproductosComponent } from './modules/productos/editproductos/editproductos.component';
 import { ListproductosComponent } from './modules/productos/listproductos/listproductos.component';
+import { ListcomprasComponent } from './modules/productos/listcompras/listcompras.component';
 
 const routes: Routes = [{
   path: "",
@@ -93,6 +94,11 @@ const routes: Routes = [{
     {
         path: "editarProducto",
         component: EditproductosComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: "listarCompras",
+        component: ListcomprasComponent,
         canActivate: [AuthGuard]
     }
   ]

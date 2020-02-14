@@ -46,7 +46,14 @@ export class EditclientesComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
-          //localStorage.setItem("token", res.token);
+          localStorage.removeItem("clie_nombre");
+          localStorage.removeItem("clie_apellido");
+          localStorage.removeItem("clie_num_documento");
+          localStorage.removeItem("clie_telefono");
+          localStorage.removeItem("clie_direccion");
+          localStorage.removeItem("clie_email");
+          localStorage.removeItem("ciud_id");
+          localStorage.removeItem("doc_id");
           alert("Actualizado Correctamente.....!")
           this.router.navigate(["/inicio/listarClientes"])
         },

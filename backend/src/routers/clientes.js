@@ -4,7 +4,7 @@ const coneccionbd = require("../database");
 
 router.get("/obtenerClientes", async  (req,res) => {
   try {
-        sql = "SELECT * FROM CLIENTE";
+        sql = "SELECT  CLIE.CLIE_ID, CLIE.CLIE_NOMBRE, CLIE.CLIE_APELLIDO, CLIE.CLIE_NUM_DOCUMENTO, CLIE.CLIE_TELEFONO, CLIE.CLIE_DIRECCION, CLIE.CLIE_EMAIL, CIUD.CIUD_NOMBRE, TI.DOC_TIPO  FROM CLIENTE CLIE, CIUDAD CIUD, TIPO_DOCUMENTO TI WHERE CLIE.CIUD_ID = CIUD.CIUD_ID AND CLIE.DOC_ID = TI.DOC_ID";
         const datos = await   coneccionbd.open(sql, [], false);
         console.log(datos);
         return res.send(datos);
@@ -56,6 +56,17 @@ router.put("/actualizarCliente",async (req, res) => {
     } catch (error) {
         return res.json({ message: "Error al Actualizar Cliente"});
   }
+});
+
+router.delete("/eliminarCliente/:clie_num_documento",async (req, res) =>  {
+      try {
+            let sql = `DELETE FROM CLIENTE WHERE CLIE_NUM_DOCUMENTO = '${req.params.clie_num_documento}'`;
+            let result = JSON.parse(await coneccionbd.open(sql, [], true, res));
+            if (result == 0) return res.json({ message: "No existe el usuario a eliminar" });
+            return res.json({ message: "Proveedor eliminado con exito"});
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Usuario"});
+      }
 });
 
 module.exports = router;

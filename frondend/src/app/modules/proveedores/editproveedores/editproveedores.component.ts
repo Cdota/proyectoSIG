@@ -43,7 +43,13 @@ export class EditproveedoresComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res)
-          //localStorage.setItem("token", res.token);
+          localStorage.removeItem("prov_nombre");
+          localStorage.removeItem("prov_num_documento");
+          localStorage.removeItem("prov_telefono");
+          localStorage.removeItem("prov_direccion");
+          localStorage.removeItem("prov_email");
+          localStorage.removeItem("doc_id");
+          localStorage.removeItem("ciud_id");
           alert("Actualizado Correctamente.....!")
           this.router.navigate(["/inicio/listarProveedores"])
         },

@@ -55,7 +55,16 @@ export class EditComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res)
-        //localStorage.setItem("token", res.token);
+        localStorage.removeItem("usu_nombre");
+        localStorage.removeItem("usu_apellido");
+        localStorage.removeItem("usu_password");
+        localStorage.removeItem("usu_num_documento");
+        localStorage.removeItem("usu_telefono");
+        localStorage.removeItem("usu_direccion");
+        localStorage.removeItem("usu_email");
+        localStorage.removeItem("rol_id");
+        localStorage.removeItem("ciud_id");
+        localStorage.removeItem("doc_id");
         alert("Actualizado Correctamente.....!")
         this.router.navigate(["/inicio/listarUsuario"])
       },

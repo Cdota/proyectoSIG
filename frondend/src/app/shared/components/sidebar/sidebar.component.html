@@ -8,19 +8,20 @@
     </div>
      <mat-divider></mat-divider>
      <h2 matSubheader>Modulos</h2>
-        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/dashboard">Dashboard</a>
-        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/listarUsuario">Gestion de Usuarios</a>
-        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/listarClientes">Gestion de Clientes</a>
-        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/listarProveedores">Gestion de Proveedores</a>
-        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/listarProductos">Gestion de Productos</a>
-    <mat-divider></mat-divider>
-        <h2 matSubheader>Tools</h2>
-        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/contacts">
-        <mat-icon>import_contacts</mat-icon>
-        Contacts
-        </a>
-        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/contacts">
-        <mat-icon>contact_phone</mat-icon>
-        Leads
-        </a>
+        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/dashboard"><mat-icon>timeline</mat-icon> Dashboard</a>
+        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/listarUsuario"> <mat-icon>person</mat-icon> Gestion de Usuarios</a>
+        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/listarClientes"><mat-icon>group</mat-icon> Gestion de Clientes</a>
+        <a mat-list-item routerLinkActive="list-item-active-" routerLink="/inicio/listarProveedores"><mat-icon>group</mat-icon> Gestion de Proveedores</a>  
+        <a mat-list-item  [matMenuTriggerFor]="animals">
+            <mat-icon> view_comfy </mat-icon>Compras <mat-icon> chevron_right </mat-icon> </a >
+        <mat-menu #animals="matMenu">
+        <button mat-menu-item  routerLinkActive="list-item-active-" routerLink="/inicio/agregarProducto"> <mat-icon>event_available</mat-icon> Nueva Compra</button>
+        <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/listarProductos"><mat-icon>event_note</mat-icon> Lista de Productos</button>
+        <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/listarCompras"><mat-icon>business_center</mat-icon> Registros de compras</button>
+        </mat-menu> 
+        <a mat-list-item  [matMenuTriggerFor]="ventas">
+            <mat-icon> add_shopping_cart </mat-icon>Ventas <mat-icon> chevron_right </mat-icon> </a >
+        <mat-menu #ventas="matMenu">
+        <button mat-menu-item><mat-icon>broken_image</mat-icon> Registros de ventas</button>
+        </mat-menu>
 </mat-nav-list>

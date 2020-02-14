@@ -1,0 +1,17 @@
+<h2 mat-dialog-title></h2>
+<mat-dialog-content>
+    <div class="alert alert-warning alert-dismissable">
+        <strong>¡Cuidado!</strong> Estas a punto de eliminar un registro! ¿Estas Seguro?
+      </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <td class="text-center">
+        <button (click)="save()" mat-icon-button class="btn btn-outline-primary">
+            <mat-icon> check_circle </mat-icon>
+        </button>
+        <button (click)=" cancelar()" mat-icon-button class="btn btn-outline-warning"  style="margin-left: 400px">
+            <mat-icon> highlight_off </mat-icon>
+        </button>
+    </td>
+</mat-dialog-actions>
