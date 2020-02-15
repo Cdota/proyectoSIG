@@ -5,6 +5,8 @@ import { Usuario } from '../modules/modelo/usuario';
 import { Cliente } from '../modules/modelo/clientes';
 import { Proveedor } from '../modules/modelo/proveedores';
 import { Producto } from '../modules/modelo/productos';
+import { Venta } from '../modules/modelo/ventas';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +37,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem("token");
+    localStorage.removeItem("nombre");
     this.router.navigate(["/signin"])
    }
 
@@ -55,7 +58,7 @@ export class AuthService {
    }
 
    getCompras(){
-    return this.http.get<Producto[]>(this.URL + "/obtenerCompras");
+    return this.http.get<Producto[]>(this.URL + "/obtenerProductosVenta");
    }
 
    getUsuarioId(id){
@@ -76,6 +79,15 @@ export class AuthService {
     return this.http.get<Cliente>(url);
    }
 
+   getProductosVentas(){
+    //console.log(usuario);
+   return this.http.get<Venta[]>(this.URL + "/obtenerCompras");
+   } 
+
+   getProductosCompra(){
+    //console.log(usuario);
+   return this.http.get<Venta[]>(this.URL + "/obtenerProductosCompra");
+   } 
 
    updateUsuario(user){
     return this.http.put<Usuario>(this.URL + "/actualizar", user);
@@ -110,6 +122,10 @@ export class AuthService {
     return this.http.post<any>(this.URL + "/registroProductos", user);
    } 
 
+   createVentasDatos(user){
+   return this.http.post<any>(this.URL + "/registroVentaProductos", user);
+  } 
+
    deleteUsuario(id){
     console.log(id);
     const url = `${this.URL+ "/eliminarUsuario"}/${id}`;
@@ -125,6 +141,12 @@ export class AuthService {
    deleteCliente(id){
     console.log(id);
     const url = `${this.URL+ "/eliminarCliente"}/${id}`;
+    return this.http.delete<Cliente>(url);
+   } 
+
+   deleteVenta(id){
+    console.log(id);
+    const url = `${this.URL+ "/eliminarVenta"}/${id}`;
     return this.http.delete<Cliente>(url);
    } 
 

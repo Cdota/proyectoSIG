@@ -4,7 +4,7 @@ const coneccionbd = require("../database");
 
 router.get("/obtenerProductos", async  (req,res) => {
   try {
-        sql = "SELECT * FROM PRODUCTO";
+        sql = "SELECT PRO.PROD_ID, PRO.PROD_NOMBRE, PRO.PROD_PRECIO_VENTA, PRO.PROD_CANIDAD, PRO.PROD_DESCRICPCION, PRO.PROD_FECHA,  CAT.CAT_NOMBRE,  PROV.PROV_NOMBRE  FROM PRODUCTO PRO, CATEGORIA CAT, PROVEEDOR PROV WHERE PRO.CAT_ID = CAT.CAT_ID AND PRO.PROV_ID = PROV.PROV_ID";
         const datos = await   coneccionbd.open(sql, [], false);
         console.log(datos);
         return res.send(datos);
@@ -15,7 +15,7 @@ router.get("/obtenerProductos", async  (req,res) => {
 
 router.get("/obtenerCompras", async  (req,res) => {
   try {
-        sql = "SELECT ING.ING_ID, ING.ING_NOMBRE_PRODUCTO, ING.ING_CANTIDAD, ING.IMG_PRECIO, PRO.PROV_NOMBRE, ING.ING_FECHA, ING.ING_TOTAL  FROM PROVEEDOR PRO, INGRESO ING WHERE ING.PROV_ID = PRO.PROV_ID";
+        sql = "SELECT PRO.PROD_NOMBRE, PRO.PROD_DESCRICPCION,  PRO.PROD_PRECIO_VENTA, PRO.PROD_CANIDAD  FROM PRODUCTO PRO, CATEGORIA CAT WHERE PRO.CAT_ID = CAT.CAT_ID";
         const datos = await   coneccionbd.open(sql, [], false);
         console.log(datos);
         return res.send(datos);
@@ -23,6 +23,29 @@ router.get("/obtenerCompras", async  (req,res) => {
         return res.json({ message: "Error al Obtener Productos"});
   }
 });
+
+router.get("/obtenerProductosVenta", async  (req,res) => {
+  try {
+        sql = "SELECT ING.ING_ID, ING.ING_NOMBRE_PRODUCTO, PRO.PROV_NOMBRE, ING.ING_CANTIDAD, ING.IMG_PRECIO, ING.ING_FECHA, ING.ING_TOTAL, ING.USUARIO  FROM PROVEEDOR PRO, INGRESO ING WHERE ING.PROV_ID = PRO.PROV_ID";
+        const datos = await   coneccionbd.open(sql, [], false);
+        console.log(datos);
+        return res.send(datos);
+    } catch (error) {
+        return res.json({ message: "Error al Obtener Productos"});
+  }
+});
+
+router.get("/obtenerProductosCompra", async  (req,res) => {
+  try {
+        sql = "SELECT * FROM DATOS_VENTA";
+        const datos = await   coneccionbd.open(sql, [], false);
+        console.log(datos);
+        return res.send(datos);
+    } catch (error) {
+        return res.json({ message: "Error al Obtener Productos"});
+  }
+});
+
 //let sql = `SELECT est.est_cedula, est.est_nombres, est.est_apellidop, est.est_apellidom, est.est_fecha_nac, est.est_sexo, 
 //ciu.ciudad_nombre, ciu.ciudad_id, 
 //rep.rep_nombres, rep.rep_apellidop, rep.rep_apellidom, rep.rep_cedula
@@ -64,6 +87,32 @@ router.post("/registroProductos", async (req, res) => {
     } catch (error) {
         return res.json({ message: "Error al Ingresar Producto"});
   }
+});
+
+router.post("/registroVentaProductos", async (req, res) => {
+        const {  clie_nombre, prod_nombre, prod_precio_venta, prod_cantidad, prod_fecha } = req.body;
+        const { nombre} = req.body;
+        console.log(  clie_nombre, prod_nombre, prod_precio_venta, prod_cantidad, prod_fecha, nombre);
+        total = prod_precio_venta * prod_cantidad;
+        var hora = (new Date()).getHours() + ":" +  (new Date()).getMinutes();
+        console.log(hora)
+       /* let sqll = `SELECT * FROM USUARIO WHERE USU_NOMBRE = '${nombre}'`;
+        usuario_id = JSON.parse(await coneccionbd.open(sqll, [], false))[0];
+        console.log(usuario_id[0]);
+        let sql = `SELECT * FROM CLIENTE WHERE  CLIE_NOMBRE = '${clie_nombre}'`;
+        cliente_id = JSON.parse(await coneccionbd.open(sql, [], false))[0];
+        console.log(cliente_id[0]);*/
+        //console.log(cliente_id[0]);
+        sqls = `INSERT INTO VENTA 
+            (VEN_TOTAL, DESCRIPCION, CANTIDAD, PRECIO, HORA, VEN_FECHA, USUARIO, CLIENTE)
+            VALUES ('${total}', '${prod_nombre}'
+            ,'${prod_cantidad}', '${prod_precio_venta}','${hora}', to_date('${prod_fecha}','YYYY-MM-DD'),'${nombre}','${clie_nombre}')`;
+        datos = await coneccionbd.open(sqls, [], true);
+        sqlll = `INSERT INTO DATOS_VENTA 
+            (DA_VENTA_DESCRIPCION, DA_VENTA_CANTIDAD, DA_VENTA_PRECIO, DA_VENTA_SUBTOTAL)
+            VALUES ('${prod_nombre}', '${prod_cantidad}', '${prod_precio_venta}', '${total}')`;
+        datos = await coneccionbd.open(sqlll, [], true);
+        if (datos == 1) return res.json({ message: "Registro con exito"});
 });
 
 router.put("/actualizarProducto",async (req, res) => {

@@ -51,6 +51,7 @@ router.post("/ingresar",async (req, res) => {
         let sql = `SELECT * FROM USUARIO WHERE USU_NOMBRE = '${usu_nombre}'`;
         result = JSON.parse(await coneccionbd.open(sql, [], false))[0];
         if (!result) return res.send("Usuario no registrado");
+        console.log(result[4]);
         //if (!bcrypt.compareSync(usu_password, result[3])) return res.send ("Password erroneo");
         const token = jwt.sign({ _id: usu_nombre }, "secretKey");
         return res.status(200).json({ token });

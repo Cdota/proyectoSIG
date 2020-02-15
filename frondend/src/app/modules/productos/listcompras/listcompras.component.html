@@ -20,11 +20,12 @@
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Producto</th>
+                    <th scope="col">Proveedor</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Precio Venta</th>
-                    <th scope="col">Proveedor</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
@@ -37,6 +38,7 @@
                     <td> {{producto[4]}} </td>
                     <td> {{producto[5]}} </td>
                     <td> {{producto[6]}} </td>
+                    <td> {{producto[7]}} </td>
                     <td>
                         <button (click)="Editar(producto)" mat-icon-button class="btn btn-warning">
                             <mat-icon >autorenew</mat-icon>

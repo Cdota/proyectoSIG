@@ -8,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   constructor() { }
+  "nombre"
+  
+  usuario(){
+    if(this.nombre == "Carlos")
+     return  true;
+  }
 
   ngOnInit() {
+    this.nombre=localStorage.getItem("nombre");
+    console.log(this.nombre);
   }
+
 
   
 }

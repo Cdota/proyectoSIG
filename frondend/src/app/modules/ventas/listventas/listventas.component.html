@@ -1,0 +1,94 @@
+<div style="text-align:cneter">
+</div>
+<div class="container">
+    <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
+        <mat-icon> list_alt </mat-icon>
+    </button> 
+</div>
+<th></th>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Datos</h3>
+        </div>
+        <div class="card-body">
+            <form (submit)="Guardar()" class="row">
+                <div class="form-group col-md-6">
+                    <label for="">Cliente</label>
+                    <input type="text" [(ngModel)]= "productos.clie_nombre" name="clie_nombre" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Producto</label>
+                    <input type="text" [(ngModel)]= "productos.prod_nombre" name="prod_nombre" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Precio</label>
+                    <input type="text" [(ngModel)]= "productos.prod_precio_venta" name="prod_precio_venta" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Stock Disponible</label>
+                    <input type="text" [(ngModel)]= "productos.prod_stock" name="prod_stock" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Cantidad</label>
+                    <input type="text"  [(ngModel)]= "productos.prod_cantidad" name="prod_cantidad" class="form-control" required autofocus>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Fecha</label>
+                    <input type="date" [(ngModel)]= "productos.prod_fecha" name="prod_fecha" class="form-control" required autofocus>
+                </div>
+                <div class="col-md-12">
+                    <div class="row justify-content-center">
+                        <button type = "submit" class="btn btn-danger col-md-2">Registar Producto</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p></p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Listado  de Productos</h3>
+       </div>
+      <div class="table-responsive text-center table-hover">
+          <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio Venta</th>
+                  <th scope="col">Sub total</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let venta of ventas" class="text-center">
+                  <th scope="row">{{venta[1]}} </th>
+                  <td> {{venta[2]}} </td>
+                  <td> {{venta[3] | currency }} </td>
+                  <td> {{venta[4] | currency }} </td>
+                  <td>
+                      <button (click)="Enviar(venta)" mat-icon-button class="btn btn-primary">
+                          <mat-icon >add_shopping_cart</mat-icon>
+                      </button>
+                  </td>
+                </tr>
+                <tr>
+                    <th scope="row">Total</th>
+                    <th></th>
+                    <th></th>
+                    <th>{{ total | currency }}</th> 
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+  <p></p>
+  <div class="col-md-12">
+    <div class="row justify-content-center">
+        <button (click)="Elimina()" class="btn btn-danger col-md-2">Ejecutar Venta</button>
+    </div>
+</div>
+</div>

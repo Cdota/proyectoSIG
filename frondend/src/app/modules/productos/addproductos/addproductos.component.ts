@@ -12,7 +12,7 @@ export class AddproductosComponent implements OnInit {
   productos = {
     "usuario":"",
   }
-  
+
   constructor(private service:AuthService,
     private router:Router) { }
 

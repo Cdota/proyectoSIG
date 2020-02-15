@@ -7,14 +7,15 @@ import { MatDividerModule, MatToolbarModule, MatIconModule, MatButtonModule, Mat
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-
-
+import { AreaComponent } from './widgets/area/area.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    AreaComponent
   ],
   imports: [
     CommonModule, 
@@ -26,12 +27,14 @@ import { MatTableModule } from '@angular/material/table';
     MatMenuModule, 
     MatListModule,
     RouterModule,
-    MatTableModule
+    MatTableModule,
+    HighchartsChartModule
   ], 
   exports: [
     HeaderComponent, 
     FooterComponent, 
-    SidebarComponent
+    SidebarComponent,
+    AreaComponent
   ]
 })
 export class SharedModule { }

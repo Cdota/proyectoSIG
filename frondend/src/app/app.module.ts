@@ -33,6 +33,10 @@ import { ListcomprasComponent } from './modules/productos/listcompras/listcompra
 import { DialogoclientesComponent } from './modules/clientes/dialogoclientes/dialogoclientes.component';
 import { DialogoproveedoresComponent } from './modules/proveedores/dialogoproveedores/dialogoproveedores.component';
 import { DialogoproductosComponent } from './modules/productos/dialogoproductos/dialogoproductos.component';
+import { AddventasComponent } from './modules/ventas/addventas/addventas.component';
+import { ListventasComponent } from './modules/ventas/listventas/listventas.component';
+import { EditarventasComponent } from './modules/ventas/editarventas/editarventas.component';
+import { DialogoventasComponent } from './modules/ventas/dialogoventas/dialogoventas.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { DialogoproductosComponent } from './modules/productos/dialogoproductos/
     ListcomprasComponent,
     DialogoclientesComponent,
     DialogoproveedoresComponent,
-    DialogoproductosComponent
+    DialogoproductosComponent,
+    AddventasComponent,
+    ListventasComponent,
+    EditarventasComponent,
+    DialogoventasComponent
   ],
   imports: [
     BrowserModule,
@@ -70,14 +78,15 @@ import { DialogoproductosComponent } from './modules/productos/dialogoproductos/
     MatDatepickerModule,
     MatDialogModule,
     MatMenuModule,
-    MatButtonModule
+    //MatButtonModule
   ],
 
   entryComponents:[
     DialogoComponent,
     DialogoclientesComponent,
     DialogoproveedoresComponent,
-    DialogoproductosComponent
+    DialogoproductosComponent,
+    DialogoventasComponent
   ],
   providers: [
     AuthGuard,

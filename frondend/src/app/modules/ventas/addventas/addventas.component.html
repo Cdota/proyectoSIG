@@ -1,0 +1,36 @@
+<div style="text-align:cneter">
+</div>
+<th></th>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Productos</h3>
+        </div>
+        <div class="table-responsive text-center table-hover">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio Venta</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let venta of ventas" class="text-center">
+                    <th scope="row">{{venta[0]}} </th>
+                    <td> {{venta[1]}} </td>
+                    <td> {{venta[2]}} </td>
+                    <td> {{venta[3]}} </td>
+                    <td>
+                        <button (click)="Enviar(venta)" mat-icon-button class="btn btn-primary">
+                            <mat-icon >add_shopping_cart</mat-icon>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

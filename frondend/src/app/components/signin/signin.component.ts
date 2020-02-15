@@ -12,6 +12,7 @@ export class SigninComponent implements OnInit {
   user = {
     "usu_nombre":""
   }
+  "nombre"
 
   constructor(private authservices: AuthService,
     private router: Router
@@ -26,13 +27,10 @@ export class SigninComponent implements OnInit {
     res => {
       console.log(this.user.usu_nombre)
       localStorage.setItem("nombre",this.user.usu_nombre);
-      //if(this.user.usu_nombre=="Carlos"){
+      this.nombre=localStorage.getItem("nombre");
         localStorage.setItem("token", res.token);
-        this.router.navigate(["/inicio/dashboard"])
-      //}else{
-        //console.log("Hola");
-        
-     // }
+        if(this.nombre == "Carlos") return this.router.navigate(["/inicio/dashboard"])
+        this.router.navigate(["/inicio/"])
     },
       err => console.log(err)
     )  

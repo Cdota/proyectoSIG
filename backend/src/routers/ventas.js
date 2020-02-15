@@ -25,14 +25,16 @@ router.get("/obtenerVenta/:ven_num_comprobante", async  (req,res) => {
 });
 
 router.post("/registroVenta", async (req, res) => {
-        const { prov_id, prov_nombre, prov_num_documento, prov_telefono, prov_direccion, prov_email, doc_id, ciud_id } = req.body;
-        console.log(prov_id, prov_nombre, prov_num_documento, prov_telefono, prov_direccion, prov_email, doc_id, ciud_id);
+        const { prov_id, ven_fecha, ven_total, clie_id, usu_id, producto, descripcion, cantidad, precio } = req.body;
+        console.log( ven_fecha, ven_total, clie_id, usu_id, producto, descripcion, cantidad, precio);
+        var hora = (new Date()).getHours() + ":" +  (new Date()).getMinutes();
+        var hoy = new Date();
   try {
-        let sql = `SELECT * FROM PROVEEDOR WHERE PROV_NUM_DOCUMENTO = '${prov_num_documento}'`;
-        let result = JSON.parse(await coneccionbd.open(sql, [], false, res))[0];
-        if (result) return res.json({ message: "Ya se encuentra registrado"});
-        sql = "INSERT INTO PROVEEDOR(PROV_NOMBRE, PROV_NUM_DOCUMENTO, PROV_TELEFONO, PROV_DIRECCION, PROV_EMAIL, DOC_ID, CIUD_ID) VALUES (:prov_nombre, :prov_num_documento, :prov_telefono, :prov_direccion, :prov_email, :doc_id, :ciud_id)";
-        datos = await coneccionbd.open(sql, [prov_nombre, prov_num_documento, prov_telefono, prov_direccion, prov_email, doc_id, ciud_id], true);
+        //let sql = `SELECT * FROM PROVEEDOR WHERE PROV_NUM_DOCUMENTO = '${prov_num_documento}'`;
+        //let result = JSON.parse(await coneccionbd.open(sql, [], false, res))[0];
+        //if (result) return res.json({ message: "Ya se encuentra registrado"});
+        sql = "INSERT INTO VENTA(VEN_FECHA, VEN_TOTAL, CLIE_ID, USU_ID, PRODUCTO, DESCRIPCION, CANTIDAD, PRECIO, HORA) VALUES (:ven_fecha, :ven_total, :clie_id, :usu_id, :producto, :descripcion, :cantidad, :precio, :hora)";
+        datos = await coneccionbd.open(sql, [ven_fecha, ven_total, clie_id, usu_id, producto, descripcion, cantidad, precio, hora], true);
         if (datos == 1) return res.json({ message: "Registro con exito"});
     } catch (error) {
         return res.json({ message: "Error al registrar Proveedor"});
@@ -56,6 +58,17 @@ router.put("/actualizarProveedor",async (req, res) => {
     } catch (error) {
         return res.json({ message: "Error al Actualizar Cliente"});
   }
+});
+
+router.delete("/eliminarVenta/:prod_id",async (req, res) =>  {
+      try {
+            let sql = `DELETE FROM DATOS_VENTA`;
+            let result = JSON.parse(await coneccionbd.open(sql, [], true, res));
+            if (result == 0) return res.json({ message: "No existe el VENTA a eliminar" });
+            return res.json({ message: "Producto eliminado con exito"});
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Producto"});
+      }
 });
 
 module.exports = router;

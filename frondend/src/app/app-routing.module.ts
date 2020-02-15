@@ -18,6 +18,10 @@ import { AddproductosComponent } from './modules/productos/addproductos/addprodu
 import { EditproductosComponent } from './modules/productos/editproductos/editproductos.component';
 import { ListproductosComponent } from './modules/productos/listproductos/listproductos.component';
 import { ListcomprasComponent } from './modules/productos/listcompras/listcompras.component';
+import { AddventasComponent } from './modules/ventas/addventas/addventas.component';
+import { EditarventasComponent } from './modules/ventas/editarventas/editarventas.component';
+import { ListventasComponent } from './modules/ventas/listventas/listventas.component';
+
 
 const routes: Routes = [{
   path: "",
@@ -99,6 +103,21 @@ const routes: Routes = [{
     {
         path: "listarCompras",
         component: ListcomprasComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: "agregarVenta",
+        component: AddventasComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: "editarVenta",
+        component: EditarventasComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: "listarVentas",
+        component: ListventasComponent,
         canActivate: [AuthGuard]
     }
   ]
