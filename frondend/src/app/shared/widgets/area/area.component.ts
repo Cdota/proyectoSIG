@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { Categoria } from 'src/app/modules/modelo/categoria';
 
 @Component({
   selector: 'app-widgets-area',
@@ -8,12 +11,31 @@ import HC_exporting from 'highcharts/modules/exporting';
   styleUrls: ['./area.component.css']
 })
 export class AreaComponent implements OnInit {
+   arr = [4, 2, 3];
+  categoria :Array<Object> = [];
+  constructor(private service: AuthService,
+              private router: Router) { }
 
-  constructor() { }
+  obtenerDatos(){
+    this.service.getCategoria().subscribe(data=>{
+          console.log(data);
+          this.categoria = (data);
+          const cta = data;
+          console.log( this.categoria);
+          
+      }
+    )
+  }
 
-  chartOptions :{};
+  imprimir(){
+      console.log(this.categoria);
+      
+  }
+  chartOptions: { };
   Highcharts = Highcharts;
   ngOnInit() {
+    this.obtenerDatos();
+    
     this.chartOptions = {
       chart: {
           type: 'area'
@@ -25,7 +47,7 @@ export class AreaComponent implements OnInit {
           text: 'DASHBOARD'
       },
       xAxis: {
-          categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+          categories: ["categoria"],
           tickmarkPlacement: 'on',
           title: {
               enabled: false
@@ -39,7 +61,7 @@ export class AreaComponent implements OnInit {
       },
       series: [{
           name: 'Asia',
-          data: [502, 635, 809, 947, 1402, 3634, 5268]
+          data: this.arr
       }, {
           name: 'Africa',
           data: [106, 107, 111, 133, 221, 767, 1766]
@@ -52,13 +74,12 @@ export class AreaComponent implements OnInit {
       }, {
           name: 'Oceania',
           data: [2, 2, 2, 6, 13, 30, 46]
-      }]
+      },]
    };
-   HC_exporting(Highcharts);
-   setTimeout(()=>{
+    HC_exporting(Highcharts);
+    setTimeout(() => {
       window.dispatchEvent(
-        new Event("resize")
-      )  
-   }, 350);
+            new Event('resize'))
+      }, 350);
   }
 }

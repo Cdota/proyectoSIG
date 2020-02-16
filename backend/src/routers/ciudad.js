@@ -12,7 +12,7 @@ router.get("/obtenerCiudades", async  (req,res) => {
         return res.json({ message: "Error al  Obtener Ciudad"});
   }
 });
-
+ 
 router.get("/obtenerCiudad/:ciud_nombre", async  (req,res) => {
   try {
         let sql = `SELECT * FROM CIUDAD WHERE CIUD_NOMBRE = '${req.params.ciud_nombre}'`;

@@ -2,7 +2,7 @@
 </div>
 <div class="container">
     <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
-        <mat-icon> list_alt </mat-icon>
+        <mat-icon>assignment_return</mat-icon> Nueva Compra
     </button> 
 </div>
 <th></th>
@@ -70,8 +70,8 @@
                   <td> {{venta[3] | currency }} </td>
                   <td> {{venta[4] | currency }} </td>
                   <td>
-                      <button (click)="Enviar(venta)" mat-icon-button class="btn btn-primary">
-                          <mat-icon >add_shopping_cart</mat-icon>
+                      <button (click)="ElimnarProducto(venta)" mat-icon-button class="btn btn-danger">
+                        <mat-icon>highlight_off</mat-icon>
                       </button>
                   </td>
                 </tr>

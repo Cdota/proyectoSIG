@@ -9,10 +9,13 @@ import { Venta } from '../../modelo/ventas';
   styleUrls: ['./listventas.component.css']
 })
 export class ListventasComponent implements OnInit {
-  ventas:Venta[];
-  total:number;
+  ventas: Venta[];
+  eliman = {
+    "producto_eliminar":""
+  }
+  total: number;
   productos =  {
-    "prod_nombre":"",
+    prod_nombre : '',
     "prod_precio_venta":"",
     "prod_cantidad":"",
     "prod_descripcion":"",
@@ -22,12 +25,25 @@ export class ListventasComponent implements OnInit {
     "clie_nombre":"",
     "nombre":""
   }
-  constructor(private service:AuthService,
-    private router:Router) { }
+  constructor(private service: AuthService,
+              private router: Router) { }
 
   Listar(){
-    this.router.navigate(["/inicio/agregarVenta"]);
-}
+    this.router.navigate(['/inicio/agregarVenta']);
+  }
+  
+  ElimnarProducto(venta){
+    localStorage.setItem("producto_eliminar",venta[1]);
+    this.eliman.producto_eliminar=localStorage.getItem("producto_eliminar");
+    this.service.ElimnarProducto(this.eliman.producto_eliminar)
+      .subscribe(data=>{
+        this.ngOnInit();
+          alert("Producto descartado")        
+       }
+      )
+      this.ngOnInit();
+  }
+
 
 Guardar(){
   this.service.createVentasDatos(this.productos) 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-//components
-import {SigninComponent} from "./components/signin/signin.component";
+// components
+import {SigninComponent} from './components/signin/signin.component';
 import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
@@ -21,6 +21,7 @@ import { ListcomprasComponent } from './modules/productos/listcompras/listcompra
 import { AddventasComponent } from './modules/ventas/addventas/addventas.component';
 import { EditarventasComponent } from './modules/ventas/editarventas/editarventas.component';
 import { ListventasComponent } from './modules/ventas/listventas/listventas.component';
+import { RegistroventasComponent } from './modules/ventas/registroventas/registroventas.component';
 
 
 const routes: Routes = [{
@@ -118,6 +119,11 @@ const routes: Routes = [{
     {
         path: "listarVentas",
         component: ListventasComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: "listarVentasRealizada",
+        component: RegistroventasComponent,
         canActivate: [AuthGuard]
     }
   ]

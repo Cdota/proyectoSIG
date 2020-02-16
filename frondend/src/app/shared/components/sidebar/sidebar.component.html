@@ -1,8 +1,8 @@
 <mat-nav-list>
     <div class="profile-card">
         <div class="header">
-            <h2>Soufiane FADIL</h2>
-            <h4>example@perrio.com</h4>
+            <h2>BIENVENIDO</h2>
+            <h4>{{nombre}} </h4>
         </div>
         <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Soufiane FADIL">
     </div>
@@ -24,7 +24,7 @@
             <mat-icon> add_shopping_cart </mat-icon>Ventas <mat-icon> chevron_right </mat-icon> </a >
         <mat-menu #ventas="matMenu">
         <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/agregarVenta" mat-menu-item><mat-icon>add_shopping_cart</mat-icon> Nueva Venta</button>
-        <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/listarVentas" mat-menu-item><mat-icon>broken_image</mat-icon> Registros de ventas</button>
+        <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/listarVentasRealizada" mat-menu-item><mat-icon>broken_image</mat-icon> Registros de ventas</button>
         </mat-menu>
     </ng-container>
     <ng-template #otro>
@@ -32,7 +32,7 @@
             <mat-icon> add_shopping_cart </mat-icon>Ventas <mat-icon> chevron_right </mat-icon> </a >
         <mat-menu #ventas="matMenu">
         <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/agregarVenta" mat-menu-item><mat-icon>add_shopping_cart</mat-icon> Nueva Venta</button>
-        <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/listarVentas" mat-menu-item><mat-icon>broken_image</mat-icon> Registros de ventas</button>
+        <button mat-menu-item routerLinkActive="list-item-active-" routerLink="/inicio/listarVentasRealizada" mat-menu-item><mat-icon>broken_image</mat-icon> Regitros de ventas</button>
         </mat-menu>
     </ng-template>
      

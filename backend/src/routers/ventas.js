@@ -4,7 +4,7 @@ const coneccionbd = require("../database");
 
 router.get("/obtenerVentas", async  (req,res) => {
   try {
-        sql = "SELECT * FROM VENTA";
+        sql = "SELECT VEN_ID, DESCRIPCION, PRECIO, CANTIDAD, VEN_TOTAL, VEN_FECHA, HORA, CLIENTE, USUARIO  FROM VENTA";
         const datos = await   coneccionbd.open(sql, [], false);
         console.log(datos);
         return res.send(datos);
@@ -63,6 +63,17 @@ router.put("/actualizarProveedor",async (req, res) => {
 router.delete("/eliminarVenta/:prod_id",async (req, res) =>  {
       try {
             let sql = `DELETE FROM DATOS_VENTA`;
+            let result = JSON.parse(await coneccionbd.open(sql, [], true, res));
+            if (result == 0) return res.json({ message: "No existe el VENTA a eliminar" });
+            return res.json({ message: "Producto eliminado con exito"});
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Producto"});
+      }
+});
+
+router.delete("/eliminarProductoVenta/:producto_eliminar",async (req, res) =>  {
+      try {
+            let sql = `DELETE FROM DATOS_VENTA WHERE DA_VENTA_DESCRIPCION = '${req.params.producto_eliminar}'`;
             let result = JSON.parse(await coneccionbd.open(sql, [], true, res));
             if (result == 0) return res.json({ message: "No existe el VENTA a eliminar" });
             return res.json({ message: "Producto eliminado con exito"});

@@ -15,7 +15,7 @@ router.get("/obtenerProductos", async  (req,res) => {
 
 router.get("/obtenerCompras", async  (req,res) => {
   try {
-        sql = "SELECT PRO.PROD_NOMBRE, PRO.PROD_DESCRICPCION,  PRO.PROD_PRECIO_VENTA, PRO.PROD_CANIDAD  FROM PRODUCTO PRO, CATEGORIA CAT WHERE PRO.CAT_ID = CAT.CAT_ID";
+        sql = "SELECT PRO.PROD_ID, PRO.PROD_NOMBRE, PRO.PROD_DESCRICPCION,  PRO.PROD_PRECIO_VENTA, PRO.PROD_CANIDAD  FROM PRODUCTO PRO, CATEGORIA CAT WHERE PRO.CAT_ID = CAT.CAT_ID";
         const datos = await   coneccionbd.open(sql, [], false);
         console.log(datos);
         return res.send(datos);
@@ -146,4 +146,22 @@ router.delete("/eliminarProducto/:prod_id",async (req, res) =>  {
   }
 });
 
+router.get("/obtenerCategoria", async  (req,res) => {
+  try {
+        let categoria = [];
+        let sql = `SELECT * FROM CATEGORIA`;
+        let datos = JSON.parse(await coneccionbd.open(sql, [], false, res));
+        console.log(datos);
+       // return res.send(datos);
+       datos.forEach(element => {
+         let obj = {};
+         obj.cat_nombre = element[1];
+         categoria.push(obj);
+       });
+       console.log(categoria)
+       return res.json(categoria);
+    } catch (error) {
+        return res.json({ message: "Error al Obtener Productos"});
+  }
+});
 module.exports = router;

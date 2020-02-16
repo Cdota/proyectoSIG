@@ -6,13 +6,14 @@ import { Cliente } from '../modules/modelo/clientes';
 import { Proveedor } from '../modules/modelo/proveedores';
 import { Producto } from '../modules/modelo/productos';
 import { Venta } from '../modules/modelo/ventas';
+import { Categoria } from '../modules/modelo/categoria';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  
+
   private URL = "http://localhost:3000/api"
   constructor(private http: HttpClient,
     private router: Router
@@ -25,7 +26,7 @@ export class AuthService {
   signIn(user){
       console.log(user);
       return this.http.post<any>(this.URL + "/ingresar", user);
-  } 
+  }
 
   loggendIn(){
    return !!localStorage.getItem("token");
@@ -55,6 +56,14 @@ export class AuthService {
 
    getProductos(){
     return this.http.get<Producto[]>(this.URL + "/obtenerProductos");
+   }
+
+   getVentas(){
+    return this.http.get<Venta[]>(this.URL + "/obtenerVentas");
+   }
+
+   getCategoria(){
+    return this.http.get<Categoria[]>(this.URL + "/obtenerCategoria");
    }
 
    getCompras(){
@@ -143,6 +152,13 @@ export class AuthService {
     const url = `${this.URL+ "/eliminarCliente"}/${id}`;
     return this.http.delete<Cliente>(url);
    } 
+
+   ElimnarProducto(id){
+    console.log(id);
+    const url = `${this.URL+ "/eliminarProductoVenta"}/${id}`;
+    return this.http.delete<Producto>(url);
+   } 
+
 
    deleteVenta(id){
     console.log(id);

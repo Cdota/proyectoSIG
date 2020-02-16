@@ -10,8 +10,8 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthService } from '../app/services/auth.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
-import  { AuthGuard } from './auth.guard';
-import  { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
 import { AddComponent } from './modules/usuarios/add/add.component';
@@ -37,6 +37,7 @@ import { AddventasComponent } from './modules/ventas/addventas/addventas.compone
 import { ListventasComponent } from './modules/ventas/listventas/listventas.component';
 import { EditarventasComponent } from './modules/ventas/editarventas/editarventas.component';
 import { DialogoventasComponent } from './modules/ventas/dialogoventas/dialogoventas.component';
+import { RegistroventasComponent } from './modules/ventas/registroventas/registroventas.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { DialogoventasComponent } from './modules/ventas/dialogoventas/dialogove
     AddventasComponent,
     ListventasComponent,
     EditarventasComponent,
-    DialogoventasComponent
+    DialogoventasComponent,
+    RegistroventasComponent
   ],
   imports: [
     BrowserModule,
@@ -72,16 +74,16 @@ import { DialogoventasComponent } from './modules/ventas/dialogoventas/dialogove
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     DefaultModule,
     MatIconModule,
     MatDatepickerModule,
     MatDialogModule,
     MatMenuModule,
-    //MatButtonModule
+    // MatButtonModule
   ],
 
-  entryComponents:[
+  entryComponents: [
     DialogoComponent,
     DialogoclientesComponent,
     DialogoproveedoresComponent,
@@ -93,7 +95,7 @@ import { DialogoventasComponent } from './modules/ventas/dialogoventas/dialogove
     AuthService,
     {
       provide:  HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService, 
+      useClass: TokenInterceptorService,
       multi: true
     }
   ],

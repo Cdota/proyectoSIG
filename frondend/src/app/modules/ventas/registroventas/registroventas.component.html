@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Productos</h3>
+            <h3>Listado de Ventas</h3>
         </div>
         <div class="table-responsive text-center table-hover">
             <table class="table">
@@ -12,24 +12,26 @@
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Producto</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Precio Venta</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Usuario</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let venta of ventas" class="text-center">
                     <th scope="row">{{venta[0]}} </th>
-                    <td> {{venta[1]}} </td>
+                    <td> {{venta[1]}}  </td>
                     <td> {{venta[2]}} </td>
                     <td> {{venta[3] | currency}} </td>
-                    <td> {{venta[4]}} </td>
-                    <td>
-                        <button (click)="Enviar(venta)" mat-icon-button class="btn btn-primary">
-                            <mat-icon >add_shopping_cart</mat-icon>
-                        </button>
-                    </td>
+                    <td> {{venta[4] | currency}} </td>
+                    <td> {{venta[5]}} </td>
+                    <td> {{venta[6]}} </td>
+                    <td> {{venta[7]}} </td>
+                    <td> {{venta[8]}} </td>
                   </tr>
                 </tbody>
               </table>

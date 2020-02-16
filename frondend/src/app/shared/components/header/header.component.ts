@@ -19,6 +19,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
+    setTimeout(() => {
+      window.dispatchEvent(
+            new Event('resize'))
+      }, 350);
     localStorage.removeItem("token");
     localStorage.removeItem("nombre");
     this.router.navigate(["/signin"])

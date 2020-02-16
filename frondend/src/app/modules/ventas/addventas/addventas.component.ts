@@ -22,9 +22,9 @@ export class AddventasComponent implements OnInit {
   Enviar(ventas){
     console.log(this.cantidad);
     //localStorage.setItem("clie_nombre",ventas[0]);
-    localStorage.setItem("prod_nombre",ventas[0]);
-    localStorage.setItem("prod_precio_venta",ventas[2]);
-    localStorage.setItem("prod_stock",ventas[3]);
+    localStorage.setItem("prod_nombre",ventas[1]);
+    localStorage.setItem("prod_precio_venta",ventas[3]);
+    localStorage.setItem("prod_stock",ventas[4]);
     this.router.navigate(["/inicio/listarVentas"])
   }
 

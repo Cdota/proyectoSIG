@@ -33,7 +33,7 @@
                   <tr *ngFor="let producto of productos" class="text-center">
                     <th scope="row">{{producto[0]}} </th>
                     <td> {{producto[1]}}  </td>
-                    <td> {{producto[2]}} </td>
+                    <td> {{producto[2] | currency}} </td>
                     <td> {{producto[3]}} </td>
                     <td> {{producto[4]}} </td>
                     <td> {{producto[5]}} </td>

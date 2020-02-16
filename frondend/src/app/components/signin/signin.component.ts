@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -8,12 +9,18 @@ import {Router} from '@angular/router';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-
+  myForm: FormGroup;
   user = {
     "usu_nombre":""
   }
   "nombre"
 
+  createFormGroup(){
+    return new FormGroup({
+      usuario: new FormControl([Validators.required]),
+      password: new FormControl([Validators.required])
+    });
+  }
   constructor(private authservices: AuthService,
     private router: Router
     ) { }
@@ -32,7 +39,7 @@ export class SigninComponent implements OnInit {
         if(this.nombre == "Carlos") return this.router.navigate(["/inicio/dashboard"])
         this.router.navigate(["/inicio/"])
     },
-      err => console.log(err)
+      err => alert("Asegurese de ingresar Correcto el nombre de Usuario y Contaseña")
     )  
   }
 }
