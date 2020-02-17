@@ -19,11 +19,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Numero Documento</label>
-                    <input type="text" [(ngModel)]= "proveedores.prov_num_documento" name="prov_num_documento" class="form-control" required autofocus>
+                    <input type="number" [(ngModel)]= "proveedores.prov_num_documento" name="prov_num_documento" class="form-control" required autofocus>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Teléfono</label>
-                    <input type="text" [(ngModel)]= "proveedores.prov_telefono" name="prov_telefono" class="form-control" required autofocus>
+                    <input type="number" [(ngModel)]= "proveedores.prov_telefono" name="prov_telefono" class="form-control" required autofocus>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Dirección</label>
@@ -31,15 +31,19 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Email</label>
-                    <input type="text" [(ngModel)]= "proveedores.prov_email" name="prov_email" class="form-control" required autofocus>
+                    <input type="text" [(ngModel)]= "proveedores.prov_email" placeholder="@gmail.com" name="prov_email" class="form-control" required autofocus>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Tipo Documento</label>
-                    <input type="text" [(ngModel)]= "proveedores.doc_id" name="doc_id" class="form-control" required autofocus>
+                    <select class="form-control" [(ngModel)]= "proveedores.doc_id" name="doc_id"> <option *ngFor="let doc of documentos" [value]="doc.doc_id">
+                        {{doc.doc_nombre}}
+                    </option></select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Ciudad</label>
-                    <input type="text" [(ngModel)]= "proveedores.ciud_id" name="ciud_id" class="form-control" required autofocus>
+                    <select class="form-control"  [(ngModel)]= "proveedores.ciud_id" name="ciud_id"> <option *ngFor="let ciud of ciudad" [value]="ciud.cat_id">
+                        {{ciud.cat_nombre}}
+                    </option></select>
                 </div>
                 <div class="col-md-12">
                     <div class="row justify-content-center">

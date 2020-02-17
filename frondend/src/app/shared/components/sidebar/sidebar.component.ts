@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit {
   "nombre"
   
   usuario(){
-    if(this.nombre == "Carlos")
+    if(this.nombre == "admin")
      return  true;
   }
 

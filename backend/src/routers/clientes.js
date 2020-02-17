@@ -41,7 +41,9 @@ router.post("/registroCliente", async (req, res) => {
 
 router.put("/actualizarCliente",async (req, res) => {
         const { clie_id, clie_nombre, clie_apellido,  clie_num_documento, clie_telefono, clie_direccion, clie_email, ciud_id, doc_id } = req.body;
-  try {
+        console.log( clie_id, clie_nombre, clie_apellido,  clie_num_documento, clie_telefono, clie_direccion, clie_email, ciud_id, doc_id);
+
+       
         let sql = `SELECT * FROM CLIENTE WHERE CLIE_NUM_DOCUMENTO = '${clie_num_documento}'`;
         let result = JSON.parse(await coneccionbd.open(sql, [], false, res))[0];
         if (!result) return res.json({ message: "No existe el Cliente"});
@@ -53,9 +55,6 @@ router.put("/actualizarCliente",async (req, res) => {
               WHERE CLIE_NUM_DOCUMENTO = '${clie_num_documento}'`;
         datos = await coneccionbd.open(sql, [], true, res);
         if (datos == 1) return res.json({ message: "Actualizado" });
-    } catch (error) {
-        return res.json({ message: "Error al Actualizar Cliente"});
-  }
 });
 
 router.delete("/eliminarCliente/:clie_num_documento",async (req, res) =>  {

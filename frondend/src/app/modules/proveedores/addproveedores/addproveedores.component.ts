@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { Ciudad } from '../../modelo/ciudad';
+import { Documento } from '../../modelo/documento';
 
 @Component({
   selector: 'app-addproveedores',
@@ -8,7 +10,8 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./addproveedores.component.css']
 })
 export class AddproveedoresComponent implements OnInit {
-
+  ciudad:Ciudad[];
+  documentos: Documento[]
   proveedores = {}
   constructor(private service:AuthService,
     private router:Router) { }
@@ -29,7 +32,26 @@ export class AddproveedoresComponent implements OnInit {
         err => console.log(err)
     )
   }
+  ObtenerDocumento(){
+    this.service.getDocumento()
+    .subscribe(data=>{
+      console.log(data);
+      this.documentos=data;
+     }
+    )
+  }
+
+  ObtenerCiudad(){
+    this.service.getCiudad()
+    .subscribe(data=>{
+      console.log(data);
+      this.ciudad=data;
+     }
+    )
+  }
   ngOnInit() {
+    this.ObtenerCiudad();
+    this.ObtenerDocumento();
   }
 
 }

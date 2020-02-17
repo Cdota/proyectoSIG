@@ -11,11 +11,18 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./listproductos.component.css']
 })
 export class ListproductosComponent implements OnInit {
+  "nombre"
+  
+  usuario(){
+    if(this.nombre == "admin")
+     return  true;
+  }
   productos:Producto[];
   constructor(private service:AuthService,
     private router:Router, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.nombre=localStorage.getItem("nombre");
     this.service.getProductos()
     .subscribe(data=>{
       console.log(data);

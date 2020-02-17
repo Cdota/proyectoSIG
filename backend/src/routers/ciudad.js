@@ -3,14 +3,23 @@ const router = Router();
 const coneccionbd = require("../database");
 
 router.get("/obtenerCiudades", async  (req,res) => {
-  try {
-        let sql = "SELECT * FROM CIUDAD";
-        const datos = await   coneccionbd.open(sql, [], false);
-        console.log(datos);
-        return res.send(datos);
-    } catch (error) {
-        return res.json({ message: "Error al  Obtener Ciudad"});
-  }
+      try {
+            let categoria = [];
+            let sql = `SELECT * FROM CIUDAD`;
+            let datos = JSON.parse(await coneccionbd.open(sql, [], false, res));
+            console.log(datos);
+           // return res.send(datos);
+           datos.forEach(element => {
+             let obj = {};
+             obj.cat_id = element[0];
+             obj.cat_nombre = element[1];
+             categoria.push(obj);
+           });
+           console.log(categoria)
+           return res.json(categoria);
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Productos"});
+      }
 });
  
 router.get("/obtenerCiudad/:ciud_nombre", async  (req,res) => {

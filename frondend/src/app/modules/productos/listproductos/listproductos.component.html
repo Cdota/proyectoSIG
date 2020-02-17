@@ -5,7 +5,7 @@
         <mat-icon> list_alt </mat-icon>
     </button>
     <button (click)= "Nuevo()" mat-icon-button class="btn btn-primary" style="margin-left: 10px">
-        <mat-icon> person_add </mat-icon>
+        <mat-icon>playlist_add</mat-icon>
     </button>
 </div>
 <th></th>
@@ -26,7 +26,11 @@
                     <th scope="col">Fecha</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Proveedor</th>
+                    <ng-container *ngIf = "usuario(); else otro">
                     <th scope="col">Acciones</th>
+                    </ng-container>
+                    <ng-template #otro>
+                    </ng-template>
                   </tr>
                 </thead>
                 <tbody>
@@ -39,14 +43,18 @@
                     <td> {{producto[5]}} </td>
                     <td> {{producto[6]}} </td>
                     <td> {{producto[7]}} </td>
+                    <ng-container *ngIf = "usuario(); else otro">
                     <td>
                         <button (click)="Editar(producto)" mat-icon-button class="btn btn-warning">
                             <mat-icon >autorenew</mat-icon>
                         </button>
                         <button (click)=" openDialog(producto)" mat-icon-button class="btn btn-danger"  style="margin-left: 10px">
-                            <mat-icon> highlight_off </mat-icon>
+                            <mat-icon>delete_outline</mat-icon>
                         </button>
                     </td>
+                        </ng-container>
+                        <ng-template #otro>
+                        </ng-template>
                   </tr>
                 </tbody>
               </table>

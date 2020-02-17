@@ -24,6 +24,27 @@ router.get("/obtenerVenta/:ven_num_comprobante", async  (req,res) => {
   }
 });
 
+router.get("/obtenerIngresos", async  (req,res) => {
+      try {
+            let sql = `SELECT SUM(VEN_TOTAL) FROM VENTA`;
+            let result = JSON.parse(await coneccionbd.open(sql, [], false, res))[0];
+            console.log(result);
+            return res.send(result);
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Venta"});
+      }
+});
+
+router.get("/obtenerEgresos", async  (req,res) => {
+      try {
+            let sql = `SELECT SUM(ING_TOTAL) FROM INGRESO`;
+            let result = JSON.parse(await coneccionbd.open(sql, [], false, res))[0];
+            console.log(result);
+            return res.send(result);
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Venta"});
+      }
+});
 router.post("/registroVenta", async (req, res) => {
         const { prov_id, ven_fecha, ven_total, clie_id, usu_id, producto, descripcion, cantidad, precio } = req.body;
         console.log( ven_fecha, ven_total, clie_id, usu_id, producto, descripcion, cantidad, precio);

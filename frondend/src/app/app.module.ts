@@ -80,7 +80,7 @@ import { RegistroventasComponent } from './modules/ventas/registroventas/registr
     MatDatepickerModule,
     MatDialogModule,
     MatMenuModule,
-    // MatButtonModule
+    MatButtonModule
   ],
 
   entryComponents: [

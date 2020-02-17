@@ -2,16 +2,45 @@ const { Router } = require("express");
 const router = Router();
 const coneccionbd = require("../database");
 
-router.get("/obtenerRoles", async  (req,res) => {
-  try {
-        let sql = "SELECT * FROM ROL";
-        const datos = await   coneccionbd.open(sql, [], false);
-        console.log(datos);
-        return res.send(datos);
-    } catch (error) {
-        return res.json({ message: "Error al  Obtener Roles"});
-  }
+router.get("/obtenerRol", async  (req,res) => {
+      try {
+            let categoria = [];
+            let sql = `SELECT * FROM ROL`;
+            let datos = JSON.parse(await coneccionbd.open(sql, [], false, res));
+            console.log(datos);
+           // return res.send(datos);
+           datos.forEach(element => {
+             let obj = {};
+             obj.rol_id = element[0];
+             obj.rol_nombre = element[1];
+             categoria.push(obj);
+           });
+           console.log(categoria)
+           return res.json(categoria);
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Productos"});
+      }
 });
+
+router.get("/obtenerDocumento", async  (req,res) => {
+      try {
+            let categoria = [];
+            let sql = `SELECT * FROM TIPO_DOCUMENTO`;
+            let datos = JSON.parse(await coneccionbd.open(sql, [], false, res));
+            console.log(datos);
+           // return res.send(datos);
+           datos.forEach(element => {
+             let obj = {};
+             obj.doc_id = element[0];
+             obj.doc_nombre = element[1];
+             categoria.push(obj);
+           });
+           console.log(categoria)
+           return res.json(categoria);
+        } catch (error) {
+            return res.json({ message: "Error al Obtener Productos"});
+      }
+})
 
 router.get("/obtenerRol/:rol_nombre", async  (req,res) => {
   try {

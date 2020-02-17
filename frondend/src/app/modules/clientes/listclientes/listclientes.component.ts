@@ -11,6 +11,13 @@ import { MatDialog } from '@angular/material';
 })
 export class ListclientesComponent implements OnInit {
  
+  "nombre"
+  
+  usuario(){
+    if(this.nombre == "admin")
+     return  true;
+  }
+
   clientes:Cliente[];
   constructor(private service:AuthService,
     private router:Router, public dialog: MatDialog) { }
@@ -46,6 +53,7 @@ export class ListclientesComponent implements OnInit {
     }
 
     ngOnInit() {
+      this.nombre=localStorage.getItem("nombre");
       this.service.getClientes()
         .subscribe(data=>{
           console.log(data);

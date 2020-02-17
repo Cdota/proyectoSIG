@@ -27,11 +27,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Numero Documento</label>
-                    <input type="text" [(ngModel)]= "user.usu_num_documento" name="num_documento" class="form-control" required autofocus>
+                    <input type="number" [(ngModel)]= "user.usu_num_documento" name="num_documento" class="form-control" required autofocus>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Teléfono</label>
-                    <input type="text" [(ngModel)]= "user.usu_telefono" name="telefono" class="form-control" required autofocus>
+                    <input type="number" [(ngModel)]= "user.usu_telefono" name="telefono" class="form-control" min='0' max="5" required autofocus>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Dirección</label>
@@ -39,19 +39,25 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Email</label>
-                    <input type="text" [(ngModel)]= "user.usu_email" name="email" class="form-control" required autofocus>
+                    <input type="email" [(ngModel)]= "user.usu_email" placeholder="@gmail.com" name="email" class="form-control" required autofocus >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Rol</label>
-                    <input type="text" [(ngModel)]= "user.rol_id" name="rol_id" class="form-control" required autofocus>
+                    <select class="form-control" [(ngModel)]= "user.rol_id" name="rol_id"> <option *ngFor="let rol of roles" [value]="rol.rol_id">
+                        {{rol.rol_nombre}}
+                    </option></select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Ciudad</label>
-                    <input type="text" [(ngModel)]= "user.ciud_id" name="ciud_id" class="form-control" required autofocus>
+                    <select class="form-control" [(ngModel)]= "user.ciud_id" name="ciud_id"> <option *ngFor="let ciud of ciudad" [value]="ciud.cat_id">
+                        {{ciud.cat_nombre}}
+                    </option></select>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="">Tipo de Documento</label>
-                    <input type="text" [(ngModel)]= "user.doc_id" name="doc_id" class="form-control" required autofocus>
+                    <select class="form-control" [(ngModel)]= "user.doc_id" name="doc_id"> <option *ngFor="let doc of documentos" [value]="doc.doc_id">
+                        {{doc.doc_nombre}}
+                    </option></select>
                 </div>
                 <div class="col-md-12">
                     <div class="row justify-content-center">

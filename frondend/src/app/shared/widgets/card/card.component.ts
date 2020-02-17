@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { Cliente } from 'src/app/modules/modelo/clientes';
 
 @Component({
   selector: 'app-widget-card',
@@ -12,14 +15,26 @@ export class CardComponent implements OnInit {
   @Input() label:string;
   @Input() total:string;
   @Input() percentage:string;
-
+  clientes:Cliente[];
   Highcharts = Highcharts;
-  constructor() { }
-
+  constructor(private service:AuthService,
+    private router:Router) { }
   chartOptions = {
-
   }
-  ngOnInit() {
+
+  consulatar(){
+    this.service.getClientes()
+    .subscribe(data=>{
+      console.log(data);
+      this.clientes=data;
+      this.clientes.length;
+      var totales = this.clientes.length;
+      console.log(totales); 
+     }
+   )
+  }
+
+  dasboar(){
     this.chartOptions = {
       chart: {
           type: 'area',
@@ -70,7 +85,7 @@ export class CardComponent implements OnInit {
         tickOptions: []
       },
       series: [{
-          data: [24, 54, 58]
+          data: [24, 54, 5, 10]
       }]
    };
     HC_exporting(Highcharts);
@@ -79,4 +94,9 @@ export class CardComponent implements OnInit {
             new Event('resize'))
       }, 350);
   }
+
+  ngOnInit() {
+    this.consulatar();
+    this.dasboar();
+}
 }

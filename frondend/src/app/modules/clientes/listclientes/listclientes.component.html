@@ -1,9 +1,6 @@
 <div style="text-align:cneter">
 </div>
 <div class="container">
-    <button (click)= "Listar()"  mat-icon-button class="btn btn-primary">
-        <mat-icon> list_alt </mat-icon>
-    </button>
     <button (click)= "Nuevo()" mat-icon-button class="btn btn-primary" style="margin-left: 10px">
         <mat-icon> person_add </mat-icon>
     </button>
@@ -27,7 +24,11 @@
                     <th scope="col">Email</th>
                     <th scope="col">Ciudad</th>
                     <th scope="col">Tipo Documento</th>
+                    <ng-container *ngIf = "usuario(); else otro">
                     <th scope="col">Acciones</th>
+                    </ng-container>
+                    <ng-template #otro>
+                    </ng-template>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,14 +42,18 @@
                     <td> {{cliente[6]}} </td>
                     <td> {{cliente[7]}} </td>
                     <td> {{cliente[8]}} </td>
+                    <ng-container *ngIf = "usuario(); else otro">
                     <td>
                         <button (click)="Editar(cliente)" mat-icon-button class="btn btn-warning">
                             <mat-icon >autorenew</mat-icon>
                         </button>
                         <button (click)=" openDialog(cliente)" mat-icon-button class="btn btn-danger"  style="margin-left: 10px">
-                            <mat-icon> highlight_off </mat-icon>
+                          <mat-icon>delete_outline</mat-icon>
                         </button>
                     </td>
+                    </ng-container>
+                    <ng-template #otro>
+                    </ng-template>
                   </tr>
                 </tbody>
               </table>

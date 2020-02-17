@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 @Component({
@@ -7,7 +7,7 @@ import HC_exporting from 'highcharts/modules/exporting';
   styleUrls: ['./pie.component.css']
 })
 export class PieComponent implements OnInit {
-
+ @Input() data = [];
   constructor() { }
   Highcharts = Highcharts;
   chartOptions = { }
@@ -20,7 +20,7 @@ export class PieComponent implements OnInit {
             type: 'pie'
         },
         title: {
-            text: 'Browser market shares in January, 2018'
+            text: 'Top 5 Productos mas vendidos'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -44,36 +44,7 @@ export class PieComponent implements OnInit {
         series: [{
             name: 'Brands',
             colorByPoint: true,
-            data: [{
-                name: 'Chrome',
-                y: 61.41,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Internet Explorer',
-                y: 11.84
-            }, {
-                name: 'Firefox',
-                y: 10.85
-            }, {
-                name: 'Edge',
-                y: 4.67
-            }, {
-                name: 'Safari',
-                y: 4.18
-            }, {
-                name: 'Sogou Explorer',
-                y: 1.64
-            }, {
-                name: 'Opera',
-                y: 1.6
-            }, {
-                name: 'QQ',
-                y: 1.2
-            }, {
-                name: 'Other',
-                y: 2.61
-            }]
+            data: this.data
         }]
     }
     }

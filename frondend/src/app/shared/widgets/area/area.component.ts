@@ -41,13 +41,13 @@ export class AreaComponent implements OnInit {
           type: 'area'
       },
       title: {
-          text: 'DATA'
+          text: 'Categoria de productos'
       },
       subtitle: {
-          text: 'DASHBOARD'
+          text: null
       },
       xAxis: {
-          categories: ["categoria"],
+          categories: ["Blancos", "Semigrasos", "Azules", "Crustáceos", "Moluscos"],
           tickmarkPlacement: 'on',
           title: {
               enabled: false
@@ -60,20 +60,20 @@ export class AreaComponent implements OnInit {
         enabled: true,
       },
       series: [{
-          name: 'Asia',
+          name: 'Blancos',
           data: this.arr
       }, {
-          name: 'Africa',
-          data: [106, 107, 111, 133, 221, 767, 1766]
+          name: 'Semigrasos',
+          data: [50, 100, 90, 20, 120]
       }, {
-          name: 'Europe',
-          data: [163, 203, 276, 408, 547, 729, 628]
+          name: 'Azules',
+          data: [20, 50,150, 20, 55]
       }, {
-          name: 'America',
-          data: [18, 31, 54, 156, 339, 818, 1201]
+          name: 'Crustáceos',
+          data: [30, 20, 80, 100, 25]
       }, {
-          name: 'Oceania',
-          data: [2, 2, 2, 6, 13, 30, 46]
+          name: 'Moluscos',
+          data: [55, 22, 77, 44, 88]
       },]
    };
     HC_exporting(Highcharts);

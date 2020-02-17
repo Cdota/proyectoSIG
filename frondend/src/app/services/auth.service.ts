@@ -7,6 +7,9 @@ import { Proveedor } from '../modules/modelo/proveedores';
 import { Producto } from '../modules/modelo/productos';
 import { Venta } from '../modules/modelo/ventas';
 import { Categoria } from '../modules/modelo/categoria';
+import { Ciudad } from '../modules/modelo/ciudad';
+import { Documento } from '../modules/modelo/documento';
+import { Rol } from '../modules/modelo/rol';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +51,29 @@ export class AuthService {
 
    getClientes(){
     return this.http.get<Cliente[]>(this.URL + "/obtenerClientes");
+   }
+
+   getProvedor(){
+    return this.http.get<any>(this.URL + "/obtenerProveedores");
+   }
+   
+   getCiudad(){
+    return this.http.get<Ciudad[]>(this.URL + "/obtenerCiudades");
+   }
+   getRol(){
+    return this.http.get<Rol[]>(this.URL + "/obtenerRol");
+   }
+
+   getDocumento(){
+    return this.http.get<Documento[]>(this.URL + "/obtenerDocumento");
+   }
+
+   getIngresos(){
+    return this.http.get<any>(this.URL + "/obtenerIngresos");
+   }
+
+   getEgresos(){
+    return this.http.get<any>(this.URL + "/obtenerEgresos");
    }
 
    getProveedores(){
